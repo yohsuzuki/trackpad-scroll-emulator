@@ -65,6 +65,7 @@
       }
       $scrollContentEl = $el.find('.tse-scroll-content');
 
+      hideNativeScrollbar();
       resizeScrollContent();
 
       $el.on('mouseenter', flashScrollbar);
@@ -186,6 +187,19 @@
     }
 
     /**
+     * Hide native scrollbar using css attributes right and bottom
+     */
+    function hideNativeScrollbar() {
+      if (options.scrollbarHideStrategy === 'rightAndBottom') {
+        if (scrollDirection === 'vert') {
+          $scrollContentEl.css({'right' : '-'+scrollbarWidth()+'px'});
+        } else {
+          $scrollContentEl.css({'bottom' : '-'+scrollbarWidth()+'px'});
+        }
+      }
+    }
+
+    /**
      * Resize content element
      */
     function resizeScrollContent() {
@@ -297,7 +311,8 @@
   $.fn[pluginName].defaults = {
     onInit: function() {},
     onDestroy: function() {},
-    wrapContent: true
+    wrapContent: true,
+    scrollbarHideStrategy: 'widthAndHeight' // can also be 'rightAndBottom'
   };
 
 })(jQuery);
