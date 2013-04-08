@@ -70,6 +70,14 @@ By default TrackpadScrollEmulator requires minimal markup, as shown above. When 
 
 Default value is `true`
 
+####scrollbarHideStrategy
+
+If your content width is determined by css attributes right and bottom rather than width and height, you can change the default scrollbar hiding strategy by setting the scrollbarHideStrategy option to `'rightAndBottom'`:
+
+    $('wrapper').TrackpadScrollEmulator({scrollbarHideStrategy: 'rightAndBottom'});
+
+Default value is `'widthAndHeight'`
+
 ###Notifying the plugin of content changes
 
 If you later dynamically modify your content, for instance changing its height or width, or adding or removing content, you should recalculate the scrollbars like so:
